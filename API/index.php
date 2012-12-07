@@ -1,11 +1,9 @@
 <?php
 class Error
 {
-	private static $errors = array
-	(
+	private static $errors = array(
 	0 => 'Invalid or null query',
-	1 => 'Undefined'
-	);
+	1 => 'Undefined');
 	public static send($i)
 	{
 		if(array_key_exists($i, self::$errors))
