@@ -25,6 +25,7 @@ class RESTParser
 	public function __construct($query)
 	{
 		$this->queryString = $query;
+		//echo $this->queryString; // to be deleted, debug
 	}
 	public function getQueryString()
 	{
