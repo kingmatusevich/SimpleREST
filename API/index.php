@@ -13,5 +13,4 @@ $API = new RESTAPI(true);
 					/////////////////////////////////////////////////////////////////////////////////////////////////
 
 $API->start();		//initiates the parsing and processing process inside the instantiated rest.api
-$sysDebug = new Debug(true);
-?>
+<?
