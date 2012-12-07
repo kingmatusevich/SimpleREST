@@ -1,10 +1,9 @@
 <?php
 class Error
 {
-	private static $errors = array(
-	0 => 'Invalid or null query',
-	1 => 'Undefined');
-	public static send($i)
+	private static $errors = array(0 => 'Invalid or null query',1 => 'Undefined');
+	
+	public static function send($i)
 	{
 		if(array_key_exists($i, self::$errors))
 		{
@@ -15,6 +14,8 @@ class Error
 			
 		}
 	}
+	
+
 }
 class RESTParser
 {
@@ -58,11 +59,11 @@ class RESTAPI
 			switch($this->currentBlock)
 			{
 				case 'API':
-				$this->start(); Break();
+				$this->start; break;
 				case 'auth':
-				$this->authentification(); Break();
+				$this->authentification; break;
 				case 'news':
-				$this->news(); Break();
+				$this->news; break;
 				default:
 				Error::send(0);
 			}
