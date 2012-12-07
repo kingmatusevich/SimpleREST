@@ -75,11 +75,11 @@ class RESTAPI
 	}
 	public function authentification()
 	{
-		
+		echo 'authentification'; // for debug only
 	}
 	public function news()
 	{
-		
+		echo 'news';  // for debug only
 	}
 }
 
