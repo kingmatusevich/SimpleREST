@@ -7,7 +7,6 @@ class DataObject
 {
 	protected $debug;
 	public $name;
-	public $fields;
 	protected $format;
 	protected $mysql;
 	protected $cache;
@@ -25,19 +24,13 @@ class DataObject
 		}
 		
 	}
-	protected function fieldsInitialization() // This has to be overriden by subclassing it.
-	{
-		$this->fields = array();
-	}
 	public function __construct($format = 'json', $cache = true, $expiration = 300, $debug = false)
 	{
-		global $dbSettings;
+		$dbSettings = array('host' => 'mysql16.000webhost.com', 'user' => 'a3584161_admin', 'password' => '5f5xqa', 'database' => 'a3584161_main');
 		$this->setFormat($format);
 		$this->debug = new Debug($debug);
 		$this->cache = new Cache($cache, $expiration, $this->format);
-		
-		$this->fieldsInitialization();
-		$this->mysql = new Database($name, $fields, $dbSettings);		
+		$this->mysql = new Database($name, $dbSettings);		
 	}
 	
 	public function allItems()

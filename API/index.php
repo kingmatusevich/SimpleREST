@@ -2,7 +2,7 @@
 include_once('error.debug.php');	// Already included inside rest.api, included for documentation
 include_once('rest.parser.php');	// Already included inside rest.api, included for documentation
 include_once('rest.api.php');		// This includes rest.api, rest.parser, error.debug	
-$globalDebugEnabled = false;		// Debugging of global errors in error.debug, default behaviour if not specified is set to true
+$globalDebugEnabled = true;		// Debugging of global errors in error.debug, default behaviour if not specified is set to true
 
 $API = new RESTAPI(true);			
 					/////////////////////////////////////////////////////////////////////////////////////////////////	

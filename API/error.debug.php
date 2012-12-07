@@ -2,7 +2,7 @@
 $globalDebugEnabled = true;
 class Error
 {
-	protected static $errors = array(0 => 'Invalid query',1 => 'Null query', 2 => 'Invalid Error');
+	protected static $errors = array(0 => 'Invalid query',1 => 'Null query', 2 => 'Invalid Error', 3 => 'Validation Error');
 	
 	public static function send($i)
 	{

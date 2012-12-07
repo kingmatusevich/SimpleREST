@@ -1,17 +1,20 @@
 <?php
 include_once('rest.parser.php');
 include_once('error.debug.php');
+include_once('data.manager.php');
 class RESTAPI
 {
 	protected $queryString;
 	protected $RESTParser;
 	protected $currentBlock;
+	protected $dataManager;
 	protected $debug;
 	public function __construct($debug = false)
 	{
 		$this->queryString = $_SERVER['QUERY_STRING'];
 		$this->RESTParser = new RESTParser($this->queryString, $debug);
 		$this->debug = new Debug($debug);
+		$this->dataManager = new DataManager(true);
 	}
 	public function start()
 	{
@@ -23,7 +26,7 @@ class RESTAPI
 			{
 				case 'API':
 				$this->start(); break;
-				case 'auth':
+				case 'LOGIN':
 				$this->authentification(); break;
 				case 'news':
 				$this->news(); break;
@@ -47,7 +50,22 @@ class RESTAPI
 	}
 	protected function authentification()
 	{
-		echo 'authentification'; // for debug only
+		$user = $_POST['user'];
+		$pwd = $_POST['password'];
+		
+		if ($user && $pwd)
+		{
+			$session = $this->dataManager->users->attemptLogin($user, $pwd);
+			if ($session)
+			{
+				$this->debug->message($session);
+				
+			} else if ($session == false)
+			{
+				Error::send(3);
+			}
+		}
+		
 	}
 	protected function news()
 	{
