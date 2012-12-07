@@ -26,7 +26,7 @@ class RESTAPI
 			{
 				case 'API':
 				$this->start(); break;
-				case 'LOGIN':
+				case 'auth':
 				$this->authentification(); break;
 				case 'news':
 				$this->news(); break;
@@ -48,24 +48,55 @@ class RESTAPI
 			echo $this->RESTParser->nextBlock().'</br>';
 		}
 	}
-	protected function authentification()
+	protected function getSession()
 	{
 		$user = $_POST['user'];
-		$pwd = $_POST['password'];
-		
-		if ($user && $pwd)
+		$password = $_POST['password'];
+		if ($user && $password)
 		{
-			$session = $this->dataManager->users->attemptLogin($user, $pwd);
+			$session = $this->dataManager->users->attemptLogin($user, $password);
 			if ($session)
 			{
-				$this->debug->message($session);
-				
-			} else if ($session == false)
+				header('Content-Type: application/json');
+				echo json_encode(array('session' => $session));
+			} else
 			{
+				header('WWW-Authenticate: Negotiate');
 				Error::send(3);
 			}
+		} else
+		{
+			header('WWW-Authenticate: Negotiate');
+			Error::send(3);
 		}
-		
+	}
+	protected function session()
+	{
+		if (!$this->RESTParser->isEmpty())
+		{
+			$this->currentBlock = $this->RESTParser->nextBlock();
+			switch($this->currentBlock)
+			{
+				case 'GET':
+				$this->getSession(); break;
+				default:
+				Error::send(0);
+			}
+		} else Error::send(1);
+	}
+	protected function authentification()
+	{
+		if (!$this->RESTParser->isEmpty())
+		{
+			$this->currentBlock = $this->RESTParser->nextBlock();
+			switch($this->currentBlock)
+			{
+				case 'session':
+				$this->session(); break;
+				default:
+				Error::send(0);
+			}
+		} else Error::send(1);
 	}
 	protected function news()
 	{
