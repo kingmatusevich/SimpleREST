@@ -43,7 +43,7 @@ class DataObject
 	public function allItems()
 	{
 		$query = 'SELECT * FROM '.mysql_escape_string($this->name);
-		if (!$cache->isExpired())
+		if (!$cache->isExpired($query))
 		{
 			return $cache->data($query);
 		} else
