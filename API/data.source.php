@@ -6,13 +6,11 @@ class Database
 {
 	protected $mysql;
 	protected $name;
-	protected $fields;
 	protected $connected;
 	protected $settings;
-	public function __construct($name, $fields, $dbSettings)
+	public function __construct($name, $dbSettings)
 	{
 		$this->connected = false;
-		$this->fields = $fields;
 		$this->settings = $dbSettings;
 		$this->name = $name;
 	}
@@ -21,7 +19,6 @@ class Database
 		if (!$this->connected)
 		{
 			$this->mysql = mysqli_connect($this->settings['host'], $this->settings['user'], $this->settings['password'], $this->settings['database']);
-
 			$this->connected = true;
 		} else return true;
 	}
