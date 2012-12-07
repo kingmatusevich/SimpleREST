@@ -12,7 +12,6 @@ $API = new RESTAPI(true);
 					rest.parser if it were not set by rest.api is set to false. */
 					/////////////////////////////////////////////////////////////////////////////////////////////////
 
-$API->start();						//initiates the parsing and processing process inside the instantiated rest.api
+$API->start();		//initiates the parsing and processing process inside the instantiated rest.api
 $sysDebug = new Debug(true);
 ?>
-
