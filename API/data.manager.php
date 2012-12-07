@@ -3,9 +3,9 @@ include_once('error.debug.php');
 include_once('data.object.php');
 class Users extends DataObject
 {
-	public function __construct()
+	public function __construct($debug = false)
 	{
-		parent::__construct('json', false, 300, true);
+		parent::__construct('json', false, 300, $debug);
 		$this->name = 'users';
 	}
 	public function attemptLogin($user, $password)
@@ -41,7 +41,7 @@ class DataManager
 	public function __construct($debug = false)
 	{
 		$this->debug = new Debug($debug);
-		$this->users = new Users('json', false, 300, true);
+		$this->users = new Users($debug);
 	}
 	
 	

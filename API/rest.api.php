@@ -14,7 +14,7 @@ class RESTAPI
 		$this->queryString = $_SERVER['QUERY_STRING'];
 		$this->RESTParser = new RESTParser($this->queryString, $debug);
 		$this->debug = new Debug($debug);
-		$this->dataManager = new DataManager(true);
+		$this->dataManager = new DataManager($debug);
 	}
 	public function start()
 	{
