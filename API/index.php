@@ -4,3 +4,4 @@ $globalDebugEnabled = false;
 $API = new RESTAPI(true);			
 $API->start();						
 $sysDebug = new Debug(true);
+?>
