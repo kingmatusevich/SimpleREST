@@ -36,9 +36,9 @@ class DataObject
 	public function allItems()
 	{
 		$query = 'SELECT * FROM '.mysql_escape_string($this->name);
-		if (!$cache->isExpired($query))
+		if (!$this->cache->isExpired($query))
 		{
-			return $cache->data($query);
+			return $this->cache->data($query);
 		} else
 		{
 			$array = $this->mysql->arrayWithQuery($query);
@@ -46,7 +46,7 @@ class DataObject
 			if ($this->format == 'json')
 			{
 				$result = json_encode($array);
-				$cache->setData($query, $result);
+				$this->cache->setData($query, $result);
 			}
 			return $result;
 		}
