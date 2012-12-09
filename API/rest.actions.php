@@ -1,6 +1,7 @@
 <?php
-php_include('rest.object.php');
-class RESTAction extends RESTObject()
+include_once('rest.objects.php');
+include_once('error.debug.php');
+class RESTAction extends RESTObject
 {
 	public function start()
 	{
@@ -8,7 +9,7 @@ class RESTAction extends RESTObject()
 	}
 }
 
-class DebugAction extends RESTAction()
+class DebugAction extends RESTAction
 {
 	public function start()
 	{
@@ -20,7 +21,7 @@ class DebugAction extends RESTAction()
 	}
 }
 
-class SessionGETAction extends RESTAction()
+class SessionGETAction extends RESTAction
 {
 	public function start()
 	{
@@ -46,7 +47,7 @@ class SessionGETAction extends RESTAction()
 	}
 }
 
-class UsersGETAction extends RESTAction()
+class UsersGETAction extends RESTAction
 {
 	public function start()
 	{
@@ -54,7 +55,7 @@ class UsersGETAction extends RESTAction()
 		if ($users)
 		{
 			header('Content-Type: application/json');
-			echo json_encode($users);
+			echo $users;
 		} else Error::send(DatabaseError);
 	}
 }
