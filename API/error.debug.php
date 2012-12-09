@@ -3,7 +3,7 @@ const InvalidQuery = 0;
 const NullQuery = 1;
 const InvalidError = 2;
 const ValidationError = 3;
-const DatabaseError = 4;
+const DatabaseError = 4; 
 $globalDebugEnabled = true;
 class Error
 {

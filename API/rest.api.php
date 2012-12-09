@@ -2,7 +2,7 @@
 include_once('rest.parser.php');
 include_once('error.debug.php');
 include_once('data.manager.php');
-class RESTAPI
+class RESTAPI  
 {
 	protected $queryString;
 	protected $RESTParser;
