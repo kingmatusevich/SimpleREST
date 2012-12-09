@@ -32,6 +32,9 @@ class RESTAPI
 				$this->news(); break;
 				case 'debug':
 				$this->debug(); break;
+				case 'users':
+				$this->users(); break;
+
 				default:
 				Error::send(0);
 			}
@@ -116,8 +119,6 @@ class RESTAPI
 			{
 				case 'session':
 				$this->session(); break;
-				case 'users':
-				$this->users(); break;
 				default:
 				Error::send(0);
 			}
