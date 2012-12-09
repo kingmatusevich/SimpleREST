@@ -84,6 +84,29 @@ class RESTAPI
 			}
 		} else Error::send(1);
 	}
+	protected function getAllUsers()
+	{
+		$users = $this->dataManager->users->allItems();
+		if ($users)
+		{
+			header('Content-Type: application/json');
+			echo json_encode($users);
+		} else Error::send(DatabaseError);
+	}
+	protected function users()
+	{
+		if (!$this->RESTParser->isEmpty())
+		{
+			$this->currentBlock = $this->RESTParser->nextBlock();
+			switch($this->currentBlock)
+			{
+				case 'GET':
+				$this->getAllUsers(); break;
+				default:
+				Error::send(0);
+			}
+		} else Error::send(1);
+	}
 	protected function authentification()
 	{
 		if (!$this->RESTParser->isEmpty())
@@ -93,6 +116,8 @@ class RESTAPI
 			{
 				case 'session':
 				$this->session(); break;
+				case 'users':
+				$this->users(); break;
 				default:
 				Error::send(0);
 			}

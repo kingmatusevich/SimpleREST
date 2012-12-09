@@ -1,8 +1,13 @@
 <?php 
+const InvalidQuery = 0;
+const NullQuery = 1;
+const InvalidError = 2;
+const ValidationError = 3;
+const DatabaseError = 4;
 $globalDebugEnabled = true;
 class Error
 {
-	protected static $errors = array(0 => 'Invalid query',1 => 'Null query', 2 => 'Invalid Error', 3 => 'Validation Error');
+	protected static $errors = array(0 => 'Invalid query',1 => 'Null query', 2 => 'Invalid Error', 3 => 'Validation Error', 4 => 'Database Error');
 	
 	public static function send($i)
 	{
