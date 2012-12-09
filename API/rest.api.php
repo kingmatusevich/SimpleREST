@@ -4,17 +4,9 @@ include_once('error.debug.php');
 include_once('data.manager.php');
 class RESTAPI  
 {
-	protected $queryString;
-	protected $RESTParser;
-	protected $currentBlock;
-	protected $dataManager;
-	protected $debug;
-	public function __construct($debug = false)
+	public function __construct($list = false, $parser = false, $debug = false)
 	{
-		$this->queryString = $_SERVER['QUERY_STRING'];
-		$this->RESTParser = new RESTParser($this->queryString, $debug);
-		$this->debug = new Debug($debug);
-		$this->dataManager = new DataManager($debug);
+		parent::_construct($list, false, $debug);
 	}
 	public function start()
 	{
@@ -42,14 +34,6 @@ class RESTAPI
 		{
 			Error::send(1);
 		}		
-	}
-	protected function debug()
-	{
-		echo 'debug </br>';
-		while (!$this->RESTParser->isEmpty())
-		{
-			echo $this->RESTParser->nextBlock().'</br>';
-		}
 	}
 	protected function getSession()
 	{
