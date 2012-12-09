@@ -35,7 +35,7 @@ class RESTObject
 	{
 		return $this->parameter;
 	}
-	public funcion start()
+	public function start()
 	{
 		if (!$this->RESTParser->isEmpty())
 		{
@@ -62,5 +62,6 @@ class RESTObject
 			
 	}
 }
+
 
 ?>
