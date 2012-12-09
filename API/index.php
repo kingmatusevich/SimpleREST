@@ -2,11 +2,13 @@
 include_once('error.debug.php');	// Already included inside rest.api, included for documentation
 include_once('rest.parser.php');	// Already included inside rest.api, included for documentation
 include_once('rest.api.php');		// This includes rest.api, rest.parser, error.debug	
+include_once('rest.objects.php');	
+include_once('rest.actions.php');	
 $globalDebugEnabled = true;		// Debugging of global errors in error.debug, default behaviour if not specified is set to true
 ////////////////////////////////////////////////////////////////////////
 //SHARED OBJECTS
 $queryString = $_SERVER['QUERY_STRING'];
-$RESTParser = new RESTParser($queryString, true);
+$RESTParser = new RESTParser($queryString);
 
 ////////////////////////////////////////////////////////////////////////
 //DEBUG
@@ -25,7 +27,7 @@ $users = new RESTObject($usersList, 'users', $RESTParser);
 $authSessionGET = new SessionGETAction(array(), 'GET');
 
 //AUTH SESSION
-$authSessionList = array($authSessionGET
+$authSessionList = array($authSessionGET);
 $authSession = new RESTObject($authSessionList, 'session', $RESTParser);
 
 //AUTH
@@ -35,7 +37,7 @@ $auth = new RESTObject($authList, 'auth', $RESTParser);
 ////////////////////////////////////////////////////////////////////////
 //API
 $APIList = array($auth, $users, $debug);
-$API = new RESTAPI($APIList, false, $RESTParser);			
+$API = new RESTAPI($APIList, false, $RESTParser, false);			
 
 					/////////////////////////////////////////////////////////////////////////////////////////////////	
 					/* instantiation of rest.api with internal debugging set to true, this also sets the debugging of 

@@ -50,16 +50,19 @@ class RESTObject
 					$this->list[$i]->start();	
 				}
 				$i++;
-			}
+			};
 			if ($i == 0)
 			{
 				Error::send(NullQuery);
 			} else
-			if (!$stop)
 			{
-				Error::send(InvalidQuery)
+				if (!$stop)
+				{
+					Error::send(InvalidQuery);
+				};
 			}
-			
+
+		}
 	}
 }
 

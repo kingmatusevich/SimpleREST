@@ -1,9 +1,9 @@
 <?php 
-const InvalidQuery = 0;
-const NullQuery = 1;
-const InvalidError = 2;
-const ValidationError = 3;
-const DatabaseError = 4; 
+define(InvalidQuery, 0);
+define(NullQuery, 1);
+define(InvalidError, 2);
+define(ValidationError, 3);
+define(DatabaseError, 4); 
 $globalDebugEnabled = true;
 class Error
 {
