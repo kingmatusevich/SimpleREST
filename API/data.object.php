@@ -45,7 +45,9 @@ class DataObject
 			$result;
 			if ($this->format == 'json')
 			{
+
 				$result = json_encode($array);
+				$this->debug->message($result);
 				$cache->setData($query, $result);
 			}
 			return $result;
