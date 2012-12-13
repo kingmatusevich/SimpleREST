@@ -12,17 +12,14 @@ class DataObject
 	protected $cache;
 	private function setFormat($format = 'json')
 	{
-		if ($format == 'json')
+		switch($format)
 		{
-			$this->format = $format;
-		} else if ($format == 'XML')
-		{
-			$this->format = $format;
-		} else 
-		{
-			$this->format = 'json';
+			case 'json': $this->format = $format; break;
+			case 'JSON': $this->format = 'json'; break;
+			case 'XML': $this->format = $format; break; //experimental, not currently baked in
+			case 'xml': $this->format = 'XML'; break; 	//experimental, not currently baked in
+			default: $this->format = 'json';
 		}
-		
 	}
 	public function __construct($format = 'json', $cache = true, $expiration = 300, $debug = false)
 	{
