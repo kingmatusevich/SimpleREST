@@ -31,9 +31,9 @@ class DataObject
 		$this->mysql = new Database($name, $dbSettings);		
 	}
 	
-	public function allItems()
+	public function allItems($name)
 	{
-		$query = 'SELECT * FROM '.mysql_escape_string($this->name);
+		$query = 'SELECT * FROM '.mysql_escape_string($name);
 		if (!$this->cache->isExpired($query))
 		{
 			return $this->cache->data($query);

@@ -12,11 +12,11 @@ $RESTParser = new RESTParser($queryString);
 
 ////////////////////////////////////////////////////////////////////////
 //DEBUG
-$debug = new DebugAction(array(), 'debug');
+$debug = new DebugAction(array(), 'debug', $RESTParser);
 
 ////////////////////////////////////////////////////////////////////////
 //USERS GET
-$usersGET = new UsersGETAction(array(), 'GET');
+$usersGET = new UsersGETAction(array(), 'GET', $RESTParser);
 
 //USERS
 $usersList = array($usersGET);
