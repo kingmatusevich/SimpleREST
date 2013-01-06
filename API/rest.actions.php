@@ -51,12 +51,16 @@ class UsersGETAction extends RESTAction
 {
 	public function start()
 	{
-		$users = $this->dataManager->users->allItems();
-		if ($users)
+		if (!$this->RESTParser->isEmpty())
 		{
-			header('Content-Type: application/json');
-			echo $users;
-		} else Error::send(DatabaseError);
+			$token = $this->RESTParser->nextBlock();
+			$users = $this->dataManager->users->allItems($token);
+			if ($users)
+			{
+				header('Content-Type: application/json');
+				echo $users;
+			} else Error::send(DatabaseError); //autherror
+		} else Error::send(DatabaseError); //Needs parametererror
 	}
 }
 ?>
