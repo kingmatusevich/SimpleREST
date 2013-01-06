@@ -54,7 +54,7 @@ class UsersGETAction extends RESTAction
 		if (!$this->RESTParser->isEmpty())
 		{
 			$token = $this->RESTParser->nextBlock();
-			$users = $this->dataManager->users->allItems($token);
+			$users = $this->dataManager->users->allUsers($token);
 			if ($users)
 			{
 				header('Content-Type: application/json');
