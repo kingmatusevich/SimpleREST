@@ -28,6 +28,29 @@ class Users extends DataObject
 			} else {$this->debug->message('returns false');return false;} 
 		} else {$this->debug->message('returns false');return false;} 
 	}
+	
+	public function allUsers($token)
+	{
+		$query= "SELECT * FROM sessions WHERE token='".mysql_escape_string($token)."'";
+		$array = $this->mysql->arrayWithQuery($query);
+		if ($array)
+		{
+			$l = count($array);
+			$i = 0;
+			$done = false;
+			while($i< $l && !$done)
+				{
+					$dif = time() - $array[$i]['epoch'];
+					if ($dif < 2000) 
+						{
+							$res = $this->allItems();
+							return $res;
+							$done = true;
+						}
+					$i++;
+				}
+		}
+	}
 }
 
 
