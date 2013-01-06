@@ -3,8 +3,8 @@ include_once('error.debug.php');	// Already included inside rest.api, included f
 include_once('rest.parser.php');	// Already included inside rest.api, included for documentation
 include_once('rest.api.php');		// This includes rest.api, rest.parser, error.debug	
 include_once('rest.objects.php');	
-include_once('rest.actions.php');	
-$globalDebugEnabled = true;		// Debugging of global errors in error.debug, default behaviour if not specified is set to true
+include_once('rest.actions.php');
+include_once('global.vars.php');
 ////////////////////////////////////////////////////////////////////////
 //SHARED OBJECTS
 $queryString = $_SERVER['QUERY_STRING'];
