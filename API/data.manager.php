@@ -21,7 +21,7 @@ class Users extends DataObject
 			{
 				$this->debug->message('has a match');
 				$token = sha1('enuncampodearroz'.sha1('elvelozmurcielagocomekiwi'.$user.$password).sha1(time()));
-				$query = "INSERT INTO sessions(token,epoch) VALUES('".$token."', ".time().")";
+				$query = "INSERT INTO sessions(token,epoch, user, level) VALUES('".$token."', ".time().", '".$user."', 0)";
 				$this->debug->message(time());
 				$this->mysql->query($query);
 				return $token;
