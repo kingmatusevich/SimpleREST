@@ -24,7 +24,7 @@ class DataObject
 	public function __construct($format = 'json', $cache = true, $expiration = 300, $debug = false)
 	{
 		global $dbSettings;
-		$dbSettings = array('host' => 'mysql16.000webhost.com', 'user' => 'a3584161_admin', 'password' => '5f5xqa', 'database' => 'a3584161_main');
+		//$dbSettings = array('host' => 'mysql16.000webhost.com', 'user' => 'a3584161_admin', 'password' => '5f5xqa', 'database' => 'a3584161_main');
 		$this->setFormat($format);
 		$this->debug = new Debug($debug);
 		$this->cache = new Cache($cache, $expiration, $this->format);
